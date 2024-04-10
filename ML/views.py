@@ -8,6 +8,7 @@ def predict(request):
     if request.method == 'POST':
         form = IrisForm(request.POST)
         if form.is_valid():
+            print("Form is valid")
 
             cleaned_data = form.cleaned_data
             sepal_length = cleaned_data['sepal_length']
@@ -20,13 +21,17 @@ def predict(request):
             result = model.predict([[sepal_length, sepal_width, petal_length, petal_width]])
 
             # List prop[]
-            classification = result[0]
+            classifiction = result[0]
 
             # Save
             myform = form.save(commit=False)
-            myform.classification = classification
+            myform.classifiction = classifiction
             myform.save()
-            return render(request,'predict.html',{'result': classification})
+            return render(request,'predict.html',{'result': classifiction})
+        else:
+            print("Form is not valid")
+            print(form.errors)
+
     else:
         form = IrisForm()
 
@@ -51,10 +56,10 @@ class PredictAPI(generics.CreateAPIView):
         classification = result[0]
 
         Iris.objects.create(
-            sepal_length=sepal_length,
-            sepal_width = sepal_width
+            sepal_length=sepal_length
+            , sepal_width = sepal_width
             , petal_length= petal_length
-            , petal_width= petal_width
-            , classification=classification
+            , petal_width= petal_width,
+              classifiction=classification 
         )
         return Response({'class':classification})
