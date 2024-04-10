@@ -9,4 +9,4 @@ class Iris(models.Model):
 
     classifiction = models.CharField(max_length=20, blank=True, null=True)
     def __str__(self):
-        return self.classifiction
+        return str(self.classifiction) if self.classifiction else "No classification"
