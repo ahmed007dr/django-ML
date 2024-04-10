@@ -1,3 +1,5 @@
+{% load django_bootstrap5 %}
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -10,11 +12,11 @@
     <div class="container my-5 py-5">
         <h3 class="'mx-auto">iris prediction</h3>
         <div class="row">
-            <div class="col-lg-5 mx-auto">
+            <div class="col-lg-5 mx-auto p-5">
                 <form method="post">
                     {% csrf_token %}
-                    {{ form }}
-                    <input type="submit" value="perdict">
+                    {% bootstrap_form form %}
+                    {% bootstrap_button button_type="submit" content="predict" %}
                 </form>
             </div>
         </div>
