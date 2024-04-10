@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Iris
-from .form import IrisForm
+from .forms import IrisForm
 import pandas as pd
 
 def predict(request):
