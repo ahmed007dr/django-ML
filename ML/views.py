@@ -35,7 +35,7 @@ def predict(request):
     else:
         form = IrisForm()
 
-    return render(request, 'predict.html', {'form': myform})
+    return render(request, 'predict.html', {'form': form})
 
 
 
