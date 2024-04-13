@@ -4,7 +4,7 @@ from django.contrib import admin
 from .models import Iris
 
 class  IrisAdmin(admin.ModelAdmin):
-    list_display = ('sepal_length', 'sepal_width','petal_length','petal_width')
+    list_display = ('classifiction','sepal_length', 'sepal_width','petal_length','petal_width')
     list_filter = ['classifiction']
     
 admin.site.register(Iris, IrisAdmin)
